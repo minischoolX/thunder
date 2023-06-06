@@ -21,12 +21,12 @@ class MenuItemAdapter @Inject constructor() {
             R.id.action_new_tab -> MenuSelection.NEW_TAB
             R.id.action_incognito -> MenuSelection.NEW_INCOGNITO_TAB
             R.id.action_share -> MenuSelection.SHARE
-            R.id.action_bookmarks -> MenuSelection.BOOKMARKS
+//            R.id.action_bookmarks -> MenuSelection.BOOKMARKS
             R.id.action_copy -> MenuSelection.COPY_LINK
             R.id.action_settings -> MenuSelection.SETTINGS
             R.id.action_history -> MenuSelection.HISTORY
             R.id.action_downloads -> MenuSelection.DOWNLOADS
-            R.id.action_add_bookmark -> MenuSelection.ADD_BOOKMARK
+//            R.id.action_add_bookmark -> MenuSelection.ADD_BOOKMARK
             R.id.action_find -> MenuSelection.FIND
             else -> null
         }
