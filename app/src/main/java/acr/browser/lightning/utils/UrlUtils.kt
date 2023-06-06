@@ -78,8 +78,8 @@ fun String?.isFileUrl(): Boolean = this != null && this.startsWith(FILE)
 fun String?.isSpecialUrl(): Boolean =
     this != null
         && this.startsWith(FILE)
-//        && (this.endsWith(BookmarkPageFactory.FILENAME)
-        || this.endsWith(DownloadPageFactory.FILENAME)
+        && //(this.endsWith(BookmarkPageFactory.FILENAME)
+        /**||*/ this.endsWith(DownloadPageFactory.FILENAME)
         || this.endsWith(HistoryPageFactory.FILENAME)
         || this.endsWith(HomePageFactory.FILENAME))
 
