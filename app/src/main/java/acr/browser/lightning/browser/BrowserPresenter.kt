@@ -801,8 +801,8 @@ class BrowserPresenter @Inject constructor(
     fun onToolsClick() {
         val currentUrl = currentTab?.url ?: return
         view?.showToolsDialog(
-//            areAdsAllowed = allowListModel.isUrlAllowedAds(currentUrl),
-//            shouldShowAdBlockOption = !currentUrl.isSpecialUrl()
+            areAdsAllowed = false, //allowListModel.isUrlAllowedAds(currentUrl),
+            shouldShowAdBlockOption = false, //!currentUrl.isSpecialUrl()
         )
     }
 
