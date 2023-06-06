@@ -7,7 +7,7 @@ import acr.browser.lightning.browser.di.DiskScheduler
 import acr.browser.lightning.browser.di.MainScheduler
 import acr.browser.lightning.extensions.resizeAndShow
 import acr.browser.lightning.html.HtmlPageFactory
-import acr.browser.lightning.html.bookmark.BookmarkPageFactory
+//import acr.browser.lightning.html.bookmark.BookmarkPageFactory
 import acr.browser.lightning.html.download.DownloadPageFactory
 import acr.browser.lightning.html.history.HistoryPageFactory
 import acr.browser.lightning.html.homepage.HomePageFactory
@@ -55,8 +55,8 @@ class UrlInitializer(private val url: String) : TabInitializer {
 @Reusable
 class HomePageInitializer @Inject constructor(
     private val userPreferences: UserPreferences,
-    private val startPageInitializer: StartPageInitializer,
-    private val bookmarkPageInitializer: BookmarkPageInitializer
+    private val startPageInitializer: StartPageInitializer //,
+//    private val bookmarkPageInitializer: BookmarkPageInitializer
 ) : TabInitializer {
 
     override fun initialize(webView: WebView, headers: Map<String, String>) {
@@ -64,7 +64,7 @@ class HomePageInitializer @Inject constructor(
 
         when (homepage) {
             SCHEME_HOMEPAGE -> startPageInitializer
-            SCHEME_BOOKMARKS -> bookmarkPageInitializer
+//            SCHEME_BOOKMARKS -> bookmarkPageInitializer
             else -> UrlInitializer(homepage)
         }.initialize(webView, headers)
     }
@@ -84,13 +84,13 @@ class StartPageInitializer @Inject constructor(
 /**
  * An initializer that displays the bookmark page.
  */
-@Reusable
+/**@Reusable
 class BookmarkPageInitializer @Inject constructor(
     bookmarkPageFactory: BookmarkPageFactory,
     @DiskScheduler diskScheduler: Scheduler,
     @MainScheduler foregroundScheduler: Scheduler
 ) : HtmlPageFactoryInitializer(bookmarkPageFactory, diskScheduler, foregroundScheduler)
-
+*/
 /**
  * An initializer that displays the download page.
  */
