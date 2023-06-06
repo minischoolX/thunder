@@ -45,12 +45,12 @@ interface AppBindsModule {
     @Binds
     fun bindsSslWarningPreferences(sessionSslWarningPreferences: SessionSslWarningPreferences): SslWarningPreferences
 
-    @Binds
-    fun bindsHostsDataSource(assetsHostsDataSource: AssetsHostsDataSource): HostsDataSource
+//    @Binds
+//    fun bindsHostsDataSource(assetsHostsDataSource: AssetsHostsDataSource): HostsDataSource
 
-    @Binds
-    fun bindsHostsRepository(hostsDatabase: HostsDatabase): HostsRepository
+//    @Binds
+//    fun bindsHostsRepository(hostsDatabase: HostsDatabase): HostsRepository
 
-    @Binds
-    fun bindsHostsDataSourceProvider(preferencesHostsDataSourceProvider: PreferencesHostsDataSourceProvider): HostsDataSourceProvider
+//    @Binds
+//    fun bindsHostsDataSourceProvider(preferencesHostsDataSourceProvider: PreferencesHostsDataSourceProvider): HostsDataSourceProvider
 }
