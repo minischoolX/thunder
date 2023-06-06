@@ -1,7 +1,7 @@
 package acr.browser.lightning.browser
 
 import acr.browser.lightning.browser.tab.TabViewState
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.database.HistoryEntry
 import acr.browser.lightning.database.downloads.DownloadEntry
 import acr.browser.lightning.ssl.SslCertificateInfo
@@ -29,9 +29,9 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
             themeColor,
             isForwardEnabled,
             isBackEnabled,
-            bookmarks,
-            isBookmarked,
-            isBookmarkEnabled,
+//            bookmarks,
+//            isBookmarked,
+//            isBookmarkEnabled,
             isRootFolder,
             findInPage
         ) = viewState
@@ -46,9 +46,9 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
                 themeColor = themeColor.takeIf { it != currentState?.themeColor },
                 isForwardEnabled = isForwardEnabled.takeIf { it != currentState?.isForwardEnabled },
                 isBackEnabled = isBackEnabled.takeIf { it != currentState?.isBackEnabled },
-                bookmarks = bookmarks.takeIf { it != currentState?.bookmarks },
-                isBookmarked = isBookmarked.takeIf { it != currentState?.isBookmarked },
-                isBookmarkEnabled = isBookmarkEnabled.takeIf { it != currentState?.isBookmarkEnabled },
+//                bookmarks = bookmarks.takeIf { it != currentState?.bookmarks },
+//                isBookmarked = isBookmarked.takeIf { it != currentState?.isBookmarked },
+//                isBookmarkEnabled = isBookmarkEnabled.takeIf { it != currentState?.isBookmarkEnabled },
                 isRootFolder = isRootFolder.takeIf { it != currentState?.isRootFolder },
                 findInPage = findInPage.takeIf { it != currentState?.findInPage }
             )
@@ -61,26 +61,26 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
         tabs.takeIf { it != currentTabs }?.let(browserActivity::renderTabs)
     }
 
-    override fun showAddBookmarkDialog(title: String, url: String, folders: List<String>) {
-        browserActivity.showAddBookmarkDialog(title, url, folders)
-    }
+//    override fun showAddBookmarkDialog(title: String, url: String, folders: List<String>) {
+//        browserActivity.showAddBookmarkDialog(title, url, folders)
+//    }
 
-    override fun showBookmarkOptionsDialog(bookmark: Bookmark.Entry) {
-        browserActivity.showBookmarkOptionsDialog(bookmark)
-    }
+//    override fun showBookmarkOptionsDialog(bookmark: Bookmark.Entry) {
+//        browserActivity.showBookmarkOptionsDialog(bookmark)
+//    }
 
-    override fun showEditBookmarkDialog(
-        title: String,
-        url: String,
-        folder: String,
-        folders: List<String>
-    ) {
-        browserActivity.showEditBookmarkDialog(title, url, folder, folders)
-    }
+//    override fun showEditBookmarkDialog(
+//        title: String,
+//        url: String,
+//        folder: String,
+//        folders: List<String>
+//    ) {
+//        browserActivity.showEditBookmarkDialog(title, url, folder, folders)
+//    }
 
-    override fun showFolderOptionsDialog(folder: Bookmark.Folder) {
-        browserActivity.showFolderOptionsDialog(folder)
-    }
+//    override fun showFolderOptionsDialog(folder: Bookmark.Folder) {
+//        browserActivity.showFolderOptionsDialog(folder)
+//    }
 
     override fun showEditFolderDialog(title: String) {
         browserActivity.showEditFolderDialog(title)
@@ -114,13 +114,13 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
         browserActivity.showCloseBrowserDialog(id)
     }
 
-    override fun openBookmarkDrawer() {
-        browserActivity.openBookmarkDrawer()
-    }
+//    override fun openBookmarkDrawer() {
+//        browserActivity.openBookmarkDrawer()
+//    }
 
-    override fun closeBookmarkDrawer() {
-        browserActivity.closeBookmarkDrawer()
-    }
+//    override fun closeBookmarkDrawer() {
+//        browserActivity.closeBookmarkDrawer()
+//    }
 
     override fun openTabDrawer() {
         browserActivity.openTabDrawer()
