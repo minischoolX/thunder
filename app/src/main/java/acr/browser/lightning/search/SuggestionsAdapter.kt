@@ -1,11 +1,11 @@
 package acr.browser.lightning.search
 
 import acr.browser.lightning.R
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.database.HistoryEntry
 import acr.browser.lightning.database.SearchSuggestion
 import acr.browser.lightning.database.WebPage
-import acr.browser.lightning.database.bookmark.BookmarkRepository
+//import acr.browser.lightning.database.bookmark.BookmarkRepository
 import acr.browser.lightning.database.history.HistoryRepository
 import acr.browser.lightning.browser.di.DatabaseScheduler
 import acr.browser.lightning.browser.di.MainScheduler
@@ -39,7 +39,7 @@ class SuggestionsAdapter(
 
     private var filteredList: List<WebPage> = emptyList()
 
-    @Inject internal lateinit var bookmarkRepository: BookmarkRepository
+//    @Inject internal lateinit var bookmarkRepository: BookmarkRepository
     @Inject internal lateinit var userPreferences: UserPreferences
     @Inject internal lateinit var historyRepository: HistoryRepository
     @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
@@ -47,12 +47,12 @@ class SuggestionsAdapter(
     @Inject @field:MainScheduler internal lateinit var mainScheduler: Scheduler
     @Inject internal lateinit var searchEngineProvider: SearchEngineProvider
 
-    private var allBookmarks: List<Bookmark.Entry> = emptyList()
+//    private var allBookmarks: List<Bookmark.Entry> = emptyList()
     private val searchFilter = SearchFilter(this)
 
     private val searchIcon = context.drawable(R.drawable.ic_search)
     private val webPageIcon = context.drawable(R.drawable.ic_history)
-    private val bookmarkIcon = context.drawable(R.drawable.ic_bookmark)
+//    private val bookmarkIcon = context.drawable(R.drawable.ic_bookmark)
     private var suggestionsRepository: SuggestionsRepository
 
     /**
@@ -75,7 +75,7 @@ class SuggestionsAdapter(
             searchEngineProvider.provideSearchSuggestions()
         }
 
-        refreshBookmarks()
+//        refreshBookmarks()
 
         searchFilter.input().results()
             .subscribeOn(databaseScheduler)
@@ -91,14 +91,14 @@ class SuggestionsAdapter(
         }
     }
 
-    fun refreshBookmarks() {
+/**    fun refreshBookmarks() {
         bookmarkRepository.getAllBookmarksSorted()
             .subscribeOn(databaseScheduler)
             .subscribe { list ->
                 allBookmarks = list
             }
     }
-
+*/
     override fun getCount(): Int = filteredList.size
 
     override fun getItem(position: Int): Any? {
@@ -129,7 +129,7 @@ class SuggestionsAdapter(
         holder.urlView.text = webPage.url
 
         val image = when (webPage) {
-            is Bookmark -> bookmarkIcon
+//            is Bookmark -> bookmarkIcon
             is SearchSuggestion -> searchIcon
             is HistoryEntry -> webPageIcon
         }
@@ -155,7 +155,7 @@ class SuggestionsAdapter(
         }
     }
 
-    private fun getBookmarksForQuery(query: String): Single<List<Bookmark.Entry>> =
+/**    private fun getBookmarksForQuery(query: String): Single<List<Bookmark.Entry>> =
         Single.fromCallable {
             (allBookmarks.filter {
                 it.title.lowercase(Locale.getDefault()).startsWith(query)
@@ -163,7 +163,7 @@ class SuggestionsAdapter(
                 it.url.contains(query)
             }).distinct().take(MAX_SUGGESTIONS)
         }
-
+*/
     private fun Observable<CharSequence>.results(): Flowable<List<WebPage>> = this
         .toFlowable(BackpressureStrategy.LATEST)
         .map { it.toString().lowercase(Locale.getDefault()).trim() }
@@ -176,12 +176,12 @@ class SuggestionsAdapter(
                 .startWithItem(emptyList())
                 .share()
 
-            val bookmarksEntries = upstream
+/**            val bookmarksEntries = upstream
                 .flatMapSingle(::getBookmarksForQuery)
                 .subscribeOn(databaseScheduler)
                 .startWithItem(emptyList())
                 .share()
-
+*/
             val historyEntries = upstream
                 .flatMapSingle(historyRepository::findHistoryEntriesContaining)
                 .subscribeOn(databaseScheduler)
@@ -193,7 +193,7 @@ class SuggestionsAdapter(
             // History - 2
             // Search - 1
 
-            bookmarksEntries
+/**            bookmarksEntries
                 .join(
                     other = historyEntries,
                     selectorLeft = { bookmarksEntries },
@@ -209,20 +209,21 @@ class SuggestionsAdapter(
                         Triple(bookmarks, history, t2)
                     }
                 }
+ */               
         }
-        .map { (bookmarks, history, searches) ->
-            val bookmarkCount =
-                MAX_SUGGESTIONS - 2.coerceAtMost(history.size) - 1.coerceAtMost(searches.size)
+        .map { (/**bookmarks,*/ history, searches) ->
+//            val bookmarkCount =
+//                MAX_SUGGESTIONS - 2.coerceAtMost(history.size) - 1.coerceAtMost(searches.size)
             val historyCount =
-                MAX_SUGGESTIONS - bookmarkCount.coerceAtMost(bookmarks.size) - 1.coerceAtMost(
+                MAX_SUGGESTIONS /**- bookmarkCount.coerceAtMost(bookmarks.size)*/ - 1.coerceAtMost(
                     searches.size
                 )
             val searchCount =
-                MAX_SUGGESTIONS - bookmarkCount.coerceAtMost(bookmarks.size) - historyCount.coerceAtMost(
+                MAX_SUGGESTIONS /**- bookmarkCount.coerceAtMost(bookmarks.size)*/ - historyCount.coerceAtMost(
                     history.size
                 )
 
-            bookmarks.take(bookmarkCount) + history.take(historyCount) + searches.take(searchCount)
+          /**  bookmarks.take(bookmarkCount) +*/ history.take(historyCount) + searches.take(searchCount)
         }
 
     companion object {
