@@ -1,15 +1,15 @@
 package acr.browser.lightning.browser.di
 
-import acr.browser.lightning.adblock.allowlist.AllowListModel
-import acr.browser.lightning.adblock.allowlist.SessionAllowListModel
-import acr.browser.lightning.adblock.source.AssetsHostsDataSource
-import acr.browser.lightning.adblock.source.HostsDataSource
-import acr.browser.lightning.adblock.source.HostsDataSourceProvider
-import acr.browser.lightning.adblock.source.PreferencesHostsDataSourceProvider
-import acr.browser.lightning.database.adblock.HostsDatabase
-import acr.browser.lightning.database.adblock.HostsRepository
-import acr.browser.lightning.database.allowlist.AdBlockAllowListDatabase
-import acr.browser.lightning.database.allowlist.AdBlockAllowListRepository
+//import acr.browser.lightning.adblock.allowlist.AllowListModel
+//import acr.browser.lightning.adblock.allowlist.SessionAllowListModel
+//import acr.browser.lightning.adblock.source.AssetsHostsDataSource
+//import acr.browser.lightning.adblock.source.HostsDataSource
+//import acr.browser.lightning.adblock.source.HostsDataSourceProvider
+//import acr.browser.lightning.adblock.source.PreferencesHostsDataSourceProvider
+//import acr.browser.lightning.database.adblock.HostsDatabase
+//import acr.browser.lightning.database.adblock.HostsRepository
+//import acr.browser.lightning.database.allowlist.AdBlockAllowListDatabase
+//import acr.browser.lightning.database.allowlist.AdBlockAllowListRepository
 import acr.browser.lightning.database.bookmark.BookmarkDatabase
 import acr.browser.lightning.database.bookmark.BookmarkRepository
 import acr.browser.lightning.database.downloads.DownloadsDatabase
@@ -36,11 +36,11 @@ interface AppBindsModule {
     @Binds
     fun bindsHistoryModel(historyDatabase: HistoryDatabase): HistoryRepository
 
-    @Binds
-    fun bindsAdBlockAllowListModel(adBlockAllowListDatabase: AdBlockAllowListDatabase): AdBlockAllowListRepository
+//    @Binds
+//    fun bindsAdBlockAllowListModel(adBlockAllowListDatabase: AdBlockAllowListDatabase): AdBlockAllowListRepository
 
-    @Binds
-    fun bindsAllowListModel(sessionAllowListModel: SessionAllowListModel): AllowListModel
+//    @Binds
+//    fun bindsAllowListModel(sessionAllowListModel: SessionAllowListModel): AllowListModel
 
     @Binds
     fun bindsSslWarningPreferences(sessionSslWarningPreferences: SessionSslWarningPreferences): SslWarningPreferences
