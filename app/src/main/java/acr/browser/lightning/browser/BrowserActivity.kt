@@ -658,15 +658,15 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
                 icon = drawable(R.drawable.ic_action_desktop),
                 title = R.string.dialog_toggle_desktop,
                 onClick = presenter::onToggleDesktopAgent
-            ),
-            DialogItem(
+            )//,
+/**            DialogItem(
                 icon = drawable(R.drawable.ic_block),
                 colorTint = color(R.color.error_red).takeIf { areAdsAllowed },
                 title = whitelistString,
                 isConditionMet = shouldShowAdBlockOption,
-//                onClick = presenter::onToggleAdBlocking
+                onClick = presenter::onToggleAdBlocking
             )
-        )
+*/        )
     }
 
     /**
