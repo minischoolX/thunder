@@ -10,7 +10,7 @@ import acr.browser.lightning.browser.tab.HomePageInitializer
 import acr.browser.lightning.browser.tab.TabInitializer
 import acr.browser.lightning.browser.tab.TabModel
 import acr.browser.lightning.utils.FileUtils
-import acr.browser.lightning.utils.isBookmarkUrl
+//import acr.browser.lightning.utils.isBookmarkUrl
 import acr.browser.lightning.utils.isDownloadsUrl
 import acr.browser.lightning.utils.isHistoryUrl
 import acr.browser.lightning.utils.isSpecialUrl
