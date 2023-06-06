@@ -3,7 +3,7 @@ package acr.browser.lightning.browser
 import acr.browser.lightning.AppTheme
 import acr.browser.lightning.R
 import acr.browser.lightning.ThemableBrowserActivity
-import acr.browser.lightning.animation.AnimationUtils
+//import acr.browser.lightning.animation.AnimationUtils
 import acr.browser.lightning.browser.bookmark.BookmarkRecyclerViewAdapter
 import acr.browser.lightning.browser.color.ColorAnimator
 import acr.browser.lightning.browser.di.injector
@@ -364,7 +364,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
         viewState.isBookmarked?.let { binding.actionAddBookmark.isSelected = it }
         viewState.isBookmarkEnabled?.let { binding.actionAddBookmark.isEnabled = it }
         viewState.isRootFolder?.let {
-            binding.bookmarkBackButton.startAnimation(
+/**            binding.bookmarkBackButton.startAnimation(
                 AnimationUtils.createRotationTransitionAnimation(
                     binding.bookmarkBackButton,
                     if (it) {
@@ -374,7 +374,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
                     }
                 )
             )
-        }
+*/        }
         viewState.findInPage?.let {
             if (it.isEmpty()) {
                 binding.findBar.isVisible = false
