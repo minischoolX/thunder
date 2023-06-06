@@ -11,7 +11,7 @@ import acr.browser.lightning.search.SuggestionsAdapter
 import acr.browser.lightning.settings.activity.ThemableSettingsActivity
 //import acr.browser.lightning.settings.fragment.AdBlockSettingsFragment
 import acr.browser.lightning.settings.fragment.AdvancedSettingsFragment
-import acr.browser.lightning.settings.fragment.BookmarkSettingsFragment
+//import acr.browser.lightning.settings.fragment.BookmarkSettingsFragment
 import acr.browser.lightning.settings.fragment.DebugSettingsFragment
 import acr.browser.lightning.settings.fragment.DisplaySettingsFragment
 import acr.browser.lightning.settings.fragment.GeneralSettingsFragment
