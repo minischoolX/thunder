@@ -3,9 +3,9 @@ package acr.browser.lightning.settings.fragment
 import acr.browser.lightning.BuildConfig
 import acr.browser.lightning.R
 //import acr.browser.lightning.adblock.BloomFilterAdBlocker
-//import acr.browser.lightning.adblock.source.HostsSourceType
-//import acr.browser.lightning.adblock.source.selectedHostsSource
-//import acr.browser.lightning.adblock.source.toPreferenceIndex
+import acr.browser.lightning.adblock.source.HostsSourceType
+import acr.browser.lightning.adblock.source.selectedHostsSource
+import acr.browser.lightning.adblock.source.toPreferenceIndex
 import acr.browser.lightning.browser.di.DiskScheduler
 import acr.browser.lightning.browser.di.MainScheduler
 import acr.browser.lightning.browser.di.injector
