@@ -5,8 +5,8 @@ import acr.browser.lightning.browser.di.DaggerAppComponent
 import acr.browser.lightning.browser.di.DatabaseScheduler
 import acr.browser.lightning.browser.di.injector
 import acr.browser.lightning.browser.proxy.ProxyAdapter
-import acr.browser.lightning.database.bookmark.BookmarkExporter
-import acr.browser.lightning.database.bookmark.BookmarkRepository
+//import acr.browser.lightning.database.bookmark.BookmarkExporter
+//import acr.browser.lightning.database.bookmark.BookmarkRepository
 import acr.browser.lightning.device.BuildInfo
 import acr.browser.lightning.device.BuildType
 import acr.browser.lightning.log.Logger
@@ -32,8 +32,8 @@ class BrowserApp : Application() {
     @Inject
     internal lateinit var leakCanaryUtils: LeakCanaryUtils
 
-    @Inject
-    internal lateinit var bookmarkModel: BookmarkRepository
+//    @Inject
+//    internal lateinit var bookmarkModel: BookmarkRepository
 
     @Inject
     @field:DatabaseScheduler
@@ -100,7 +100,7 @@ class BrowserApp : Application() {
             .build()
         injector.inject(this)
 
-        Single.fromCallable(bookmarkModel::count)
+/**        Single.fromCallable(bookmarkModel::count)
             .filter { it == 0L }
             .flatMapCompletable {
                 val assetsBookmarks = BookmarkExporter.importBookmarksFromAssets(this@BrowserApp)
@@ -108,7 +108,7 @@ class BrowserApp : Application() {
             }
             .subscribeOn(databaseScheduler)
             .subscribe()
-
+*/
         if (buildInfo.buildType == BuildType.DEBUG) {
             leakCanaryUtils.setup()
         }
