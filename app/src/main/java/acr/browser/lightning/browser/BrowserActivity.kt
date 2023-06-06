@@ -375,7 +375,8 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
                     }
                 )
             )
-*/        }
+        }
+*/        
         viewState.findInPage?.let {
             if (it.isEmpty()) {
                 binding.findBar.isVisible = false
