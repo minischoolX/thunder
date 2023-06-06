@@ -1,7 +1,7 @@
 package acr.browser.lightning.browser.image
 
 import acr.browser.lightning.R
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.browser.di.MainScheduler
 import acr.browser.lightning.browser.di.NetworkScheduler
 import acr.browser.lightning.browser.theme.ThemeProvider
@@ -48,7 +48,7 @@ class FaviconImageLoader @Inject constructor(
     )
     private val compositeDisposable = CompositeDisposable()
 
-    override fun loadImage(imageView: ImageView, bookmark: Bookmark) {
+/**    override fun loadImage(imageView: ImageView, bookmark: Bookmark) {
         imageView.tag = bookmark.url
         lruCache[bookmark.url]?.let {
             if (it is Bitmap) {
@@ -84,5 +84,5 @@ class FaviconImageLoader @Inject constructor(
         fun cleanup() {
             compositeDisposable.clear()
         }
-    }
+    }*/
 }
