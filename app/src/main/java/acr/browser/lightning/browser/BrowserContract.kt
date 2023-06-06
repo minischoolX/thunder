@@ -3,7 +3,7 @@ package acr.browser.lightning.browser
 import acr.browser.lightning.browser.download.PendingDownload
 import acr.browser.lightning.browser.tab.TabModel
 import acr.browser.lightning.browser.tab.TabViewState
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.database.HistoryEntry
 import acr.browser.lightning.database.downloads.DownloadEntry
 import acr.browser.lightning.ssl.SslCertificateInfo
@@ -43,12 +43,12 @@ interface BrowserContract {
          * @param url The current URL of the page.
          * @param folders The available folders that the bookmark can be moved to.
          */
-        fun showAddBookmarkDialog(title: String, url: String, folders: List<String>)
+//        fun showAddBookmarkDialog(title: String, url: String, folders: List<String>)
 
         /**
          * Show the options dialog for the provided [bookmark].
          */
-        fun showBookmarkOptionsDialog(bookmark: Bookmark.Entry)
+//        fun showBookmarkOptionsDialog(bookmark: Bookmark.Entry)
 
         /**
          * Show the dialog to edit a bookmark.
@@ -58,17 +58,17 @@ interface BrowserContract {
          * @param folder The current folder the bookmark is in.
          * @param folders The available folders that the bookmark can be moved to.
          */
-        fun showEditBookmarkDialog(
+/**        fun showEditBookmarkDialog(
             title: String,
             url: String,
             folder: String,
             folders: List<String>
         )
-
+*/
         /**
          * Show the options dialog for the provided [folder].
          */
-        fun showFolderOptionsDialog(folder: Bookmark.Folder)
+//        fun showFolderOptionsDialog(folder: Bookmark.Folder)
 
         /**
          * Show the edit folder dialog for the folder with the provided [title].
@@ -113,12 +113,12 @@ interface BrowserContract {
         /**
          * Open the bookmark drawer if it is closed.
          */
-        fun openBookmarkDrawer()
+//        fun openBookmarkDrawer()
 
         /**
          * Close the bookmark drawer if it is open.
          */
-        fun closeBookmarkDrawer()
+//        fun closeBookmarkDrawer()
 
         /**
          * Open the tab drawer if it is closed.
@@ -289,7 +289,7 @@ interface BrowserContract {
     /**
      * The options for the bookmark menu dialog.
      */
-    enum class BookmarkOptionEvent {
+/**    enum class BookmarkOptionEvent {
         NEW_TAB,
         BACKGROUND_TAB,
         INCOGNITO_TAB,
@@ -298,7 +298,7 @@ interface BrowserContract {
         REMOVE,
         EDIT
     }
-
+*/
     /**
      * The options for the history menu dialog.
      */
