@@ -1,6 +1,6 @@
 package acr.browser.lightning.browser.image
 
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import android.widget.ImageView
 
 /**
@@ -11,6 +11,6 @@ interface ImageLoader {
     /**
      * Load a the favicon into the [imageView] for the provided [bookmark].
      */
-    fun loadImage(imageView: ImageView, bookmark: Bookmark)
+//    fun loadImage(imageView: ImageView, bookmark: Bookmark)
 
 }
