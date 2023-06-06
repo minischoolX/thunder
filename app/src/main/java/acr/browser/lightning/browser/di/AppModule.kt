@@ -5,7 +5,7 @@ import acr.browser.lightning.browser.tab.DefaultTabTitle
 import acr.browser.lightning.device.BuildInfo
 import acr.browser.lightning.device.BuildType
 import acr.browser.lightning.html.ListPageReader
-import acr.browser.lightning.html.bookmark.BookmarkPageReader
+//import acr.browser.lightning.html.bookmark.BookmarkPageReader
 import acr.browser.lightning.html.homepage.HomePageReader
 import acr.browser.lightning.js.InvertPage
 import acr.browser.lightning.js.TextReflow
@@ -195,8 +195,8 @@ class AppModule {
     @Provides
     fun providesHomePageReader(): HomePageReader = MezzanineGenerator.HomePageReader()
 
-    @Provides
-    fun providesBookmarkPageReader(): BookmarkPageReader = MezzanineGenerator.BookmarkPageReader()
+//    @Provides
+//    fun providesBookmarkPageReader(): BookmarkPageReader = MezzanineGenerator.BookmarkPageReader()
 
     @Provides
     fun providesTextReflow(): TextReflow = MezzanineGenerator.TextReflow()
