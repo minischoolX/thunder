@@ -28,7 +28,7 @@ import acr.browser.lightning.browser.view.targetUrl.LongPress
 import acr.browser.lightning.database.HistoryEntry
 import acr.browser.lightning.database.SearchSuggestion
 import acr.browser.lightning.database.WebPage
-import acr.browser.lightning.database.asFolder
+//import acr.browser.lightning.database.asFolder
 //import acr.browser.lightning.database.bookmark.BookmarkRepository
 import acr.browser.lightning.database.downloads.DownloadEntry
 import acr.browser.lightning.database.downloads.DownloadsRepository
