@@ -39,7 +39,7 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(fragment: BookmarkSettingsFragment)
+//    fun inject(fragment: BookmarkSettingsFragment)
 
     fun inject(builder: LightningDialogBuilder)
 
