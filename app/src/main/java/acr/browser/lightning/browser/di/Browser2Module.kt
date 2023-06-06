@@ -19,9 +19,9 @@ import acr.browser.lightning.browser.tab.bundle.IncognitoBundleStore
 import acr.browser.lightning.browser.ui.BookmarkConfiguration
 import acr.browser.lightning.browser.ui.TabConfiguration
 import acr.browser.lightning.browser.ui.UiConfiguration
-import acr.browser.lightning.adblock.AdBlocker
-import acr.browser.lightning.adblock.BloomFilterAdBlocker
-import acr.browser.lightning.adblock.NoOpAdBlocker
+//import acr.browser.lightning.adblock.AdBlocker
+//import acr.browser.lightning.adblock.BloomFilterAdBlocker
+//import acr.browser.lightning.adblock.NoOpAdBlocker
 import acr.browser.lightning.extensions.drawable
 import acr.browser.lightning.preference.UserPreferences
 import acr.browser.lightning.utils.IntentUtils
@@ -41,6 +41,7 @@ import javax.inject.Provider
 @Module
 class Browser2Module {
 
+/**
     @Provides
     fun providesAdBlocker(
         userPreferences: UserPreferences,
@@ -51,7 +52,8 @@ class Browser2Module {
     } else {
         noOpAdBlocker
     }
-
+*/
+    
     // TODO: dont force cast
     @Provides
     @InitialUrl
