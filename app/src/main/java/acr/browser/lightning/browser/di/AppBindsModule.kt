@@ -10,8 +10,8 @@ package acr.browser.lightning.browser.di
 //import acr.browser.lightning.database.adblock.HostsRepository
 //import acr.browser.lightning.database.allowlist.AdBlockAllowListDatabase
 //import acr.browser.lightning.database.allowlist.AdBlockAllowListRepository
-import acr.browser.lightning.database.bookmark.BookmarkDatabase
-import acr.browser.lightning.database.bookmark.BookmarkRepository
+//import acr.browser.lightning.database.bookmark.BookmarkDatabase
+//import acr.browser.lightning.database.bookmark.BookmarkRepository
 import acr.browser.lightning.database.downloads.DownloadsDatabase
 import acr.browser.lightning.database.downloads.DownloadsRepository
 import acr.browser.lightning.database.history.HistoryDatabase
@@ -27,8 +27,8 @@ import dagger.Module
 @Module
 interface AppBindsModule {
 
-    @Binds
-    fun bindsBookmarkModel(bookmarkDatabase: BookmarkDatabase): BookmarkRepository
+//    @Binds
+//    fun bindsBookmarkModel(bookmarkDatabase: BookmarkDatabase): BookmarkRepository
 
     @Binds
     fun bindsDownloadsModel(downloadsDatabase: DownloadsDatabase): DownloadsRepository
