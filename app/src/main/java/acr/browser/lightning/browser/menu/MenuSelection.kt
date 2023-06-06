@@ -12,8 +12,8 @@ enum class MenuSelection {
     FIND,
     COPY_LINK,
     ADD_TO_HOME,
-    BOOKMARKS,
-    ADD_BOOKMARK,
+//    BOOKMARKS,
+//    ADD_BOOKMARK,
     SETTINGS,
     BACK,
     FORWARD
