@@ -28,6 +28,7 @@ data class HistoryEntry(
  * A data type that represents an entity that has been bookmarked by the user or contains a page
  * that has been bookmarked by the user.
  */
+/**
 sealed class Bookmark(
     override val url: String,
     override val title: String
@@ -70,7 +71,7 @@ sealed class Bookmark(
     }
 
 }
-
+*/
 /**
  * A data type that represents a suggestion for a search query.
  */
@@ -82,6 +83,7 @@ data class SearchSuggestion(
 /**
  * Creates a [Bookmark.Folder] from the provided [String].
  */
+/**
 fun String?.asFolder(): Bookmark.Folder = this
     ?.takeIf(String::isNotBlank)
     ?.let {
@@ -90,3 +92,4 @@ fun String?.asFolder(): Bookmark.Folder = this
             title = this
         )
     } ?: Bookmark.Folder.Root
+*/
