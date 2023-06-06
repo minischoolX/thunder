@@ -32,7 +32,7 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
 //            bookmarks,
 //            isBookmarked,
 //            isBookmarkEnabled,
-            isRootFolder,
+//            isRootFolder,
             findInPage
         ) = viewState
 
@@ -49,7 +49,7 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
 //                bookmarks = bookmarks.takeIf { it != currentState?.bookmarks },
 //                isBookmarked = isBookmarked.takeIf { it != currentState?.isBookmarked },
 //                isBookmarkEnabled = isBookmarkEnabled.takeIf { it != currentState?.isBookmarkEnabled },
-                isRootFolder = isRootFolder.takeIf { it != currentState?.isRootFolder },
+//                isRootFolder = isRootFolder.takeIf { it != currentState?.isRootFolder },
                 findInPage = findInPage.takeIf { it != currentState?.findInPage }
             )
         )
@@ -82,9 +82,9 @@ class BrowserStateAdapter(private val browserActivity: BrowserActivity) : Browse
 //        browserActivity.showFolderOptionsDialog(folder)
 //    }
 
-    override fun showEditFolderDialog(title: String) {
-        browserActivity.showEditFolderDialog(title)
-    }
+//    override fun showEditFolderDialog(title: String) {
+//        browserActivity.showEditFolderDialog(title)
+//    }
 
     override fun showDownloadOptionsDialog(download: DownloadEntry) {
         browserActivity.showDownloadOptionsDialog(download)
