@@ -2,10 +2,10 @@ package acr.browser.lightning.settings.fragment
 
 import acr.browser.lightning.BuildConfig
 import acr.browser.lightning.R
-import acr.browser.lightning.adblock.BloomFilterAdBlocker
-import acr.browser.lightning.adblock.source.HostsSourceType
-import acr.browser.lightning.adblock.source.selectedHostsSource
-import acr.browser.lightning.adblock.source.toPreferenceIndex
+//import acr.browser.lightning.adblock.BloomFilterAdBlocker
+//import acr.browser.lightning.adblock.source.HostsSourceType
+//import acr.browser.lightning.adblock.source.selectedHostsSource
+//import acr.browser.lightning.adblock.source.toPreferenceIndex
 import acr.browser.lightning.browser.di.DiskScheduler
 import acr.browser.lightning.browser.di.MainScheduler
 import acr.browser.lightning.browser.di.injector
@@ -39,7 +39,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
     @Inject internal lateinit var userPreferences: UserPreferences
     @Inject @field:MainScheduler internal lateinit var mainScheduler: Scheduler
     @Inject @field:DiskScheduler internal lateinit var diskScheduler: Scheduler
-    @Inject internal lateinit var bloomFilterAdBlocker: BloomFilterAdBlocker
+//    @Inject internal lateinit var bloomFilterAdBlocker: BloomFilterAdBlocker
 
     private var recentSummaryUpdater: SummaryUpdater? = null
     private val compositeDisposable = CompositeDisposable()
@@ -72,7 +72,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
             preference = "preference_hosts_refresh_force",
             isEnabled = isRefreshHostsEnabled(),
             onClick = {
-                bloomFilterAdBlocker.populateAdBlockerFromDataSource(forceRefresh = true)
+//                bloomFilterAdBlocker.populateAdBlockerFromDataSource(forceRefresh = true)
             }
         )
     }
@@ -183,7 +183,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun updateForNewHostsSource() {
-        bloomFilterAdBlocker.populateAdBlockerFromDataSource(forceRefresh = true)
+//        bloomFilterAdBlocker.populateAdBlockerFromDataSource(forceRefresh = true)
         updateRefreshHostsEnabledStatus()
     }
 
