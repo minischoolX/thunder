@@ -73,7 +73,7 @@ interface BrowserContract {
         /**
          * Show the edit folder dialog for the folder with the provided [title].
          */
-        fun showEditFolderDialog(title: String)
+//        fun showEditFolderDialog(title: String)
 
         /**
          * Show the options dialog for the provided [download].
