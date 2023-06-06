@@ -4,7 +4,7 @@ import acr.browser.lightning.AppTheme
 import acr.browser.lightning.R
 import acr.browser.lightning.ThemableBrowserActivity
 //import acr.browser.lightning.animation.AnimationUtils
-import acr.browser.lightning.browser.bookmark.BookmarkRecyclerViewAdapter
+//import acr.browser.lightning.browser.bookmark.BookmarkRecyclerViewAdapter
 import acr.browser.lightning.browser.color.ColorAnimator
 import acr.browser.lightning.browser.di.injector
 import acr.browser.lightning.browser.image.ImageLoader
@@ -18,12 +18,12 @@ import acr.browser.lightning.browser.tab.DrawerTabRecyclerViewAdapter
 import acr.browser.lightning.browser.tab.TabPager
 import acr.browser.lightning.browser.tab.TabViewHolder
 import acr.browser.lightning.browser.tab.TabViewState
-import acr.browser.lightning.browser.ui.BookmarkConfiguration
+//import acr.browser.lightning.browser.ui.BookmarkConfiguration
 import acr.browser.lightning.browser.ui.TabConfiguration
 import acr.browser.lightning.browser.ui.UiConfiguration
 import acr.browser.lightning.browser.view.targetUrl.LongPress
 import acr.browser.lightning.constant.HTTP
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.database.HistoryEntry
 import acr.browser.lightning.database.SearchSuggestion
 import acr.browser.lightning.database.WebPage
@@ -76,12 +76,12 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
 
     private lateinit var binding: BrowserActivityBinding
     private lateinit var tabsAdapter: ListAdapter<TabViewState, TabViewHolder>
-    private lateinit var bookmarksAdapter: BookmarkRecyclerViewAdapter
+  //  private lateinit var bookmarksAdapter: BookmarkRecyclerViewAdapter
 
     private var menuItemShare: MenuItem? = null
     private var menuItemCopyLink: MenuItem? = null
     private var menuItemAddToHome: MenuItem? = null
-    private var menuItemAddBookmark: MenuItem? = null
+  //  private var menuItemAddBookmark: MenuItem? = null
 
     private val defaultColor by lazy { color(R.color.primary_color) }
     private val backgroundDrawable by lazy { ColorDrawable(defaultColor) }
@@ -162,34 +162,35 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             override fun onDrawerOpened(drawerView: View) {
                 if (drawerView == binding.tabDrawer) {
                     presenter.onTabDrawerMoved(isOpen = true)
-                } else if (drawerView == binding.bookmarkDrawer) {
-                    presenter.onBookmarkDrawerMoved(isOpen = true)
+//                } else if (drawerView == binding.bookmarkDrawer) {
+//                    presenter.onBookmarkDrawerMoved(isOpen = true)
                 }
             }
 
             override fun onDrawerClosed(drawerView: View) {
                 if (drawerView == binding.tabDrawer) {
                     presenter.onTabDrawerMoved(isOpen = false)
-                } else if (drawerView == binding.bookmarkDrawer) {
-                    presenter.onBookmarkDrawerMoved(isOpen = false)
+//                } else if (drawerView == binding.bookmarkDrawer) {
+//                    presenter.onBookmarkDrawerMoved(isOpen = false)
                 }
             }
         })
 
-        binding.bookmarkDrawer.layoutParams =
-            (binding.bookmarkDrawer.layoutParams as DrawerLayout.LayoutParams).apply {
-                gravity = when (uiConfiguration.bookmarkConfiguration) {
-                    BookmarkConfiguration.LEFT -> Gravity.START
-                    BookmarkConfiguration.RIGHT -> Gravity.END
-                }
-            }
+//        binding.bookmarkDrawer.layoutParams =
+//            (binding.bookmarkDrawer.layoutParams as DrawerLayout.LayoutParams).apply {
+//                gravity = when (uiConfiguration.bookmarkConfiguration) {
+//                    BookmarkConfiguration.LEFT -> Gravity.START
+//                    BookmarkConfiguration.RIGHT -> Gravity.END
+//                }
+//            }
 
         binding.tabDrawer.layoutParams =
             (binding.tabDrawer.layoutParams as DrawerLayout.LayoutParams).apply {
-                gravity = when (uiConfiguration.bookmarkConfiguration) {
-                    BookmarkConfiguration.LEFT -> Gravity.END
-                    BookmarkConfiguration.RIGHT -> Gravity.START
-                }
+                gravity = Gravity.START
+//                gravity = when (uiConfiguration.bookmarkConfiguration) {
+//                    BookmarkConfiguration.LEFT -> Gravity.END
+//                    BookmarkConfiguration.RIGHT -> Gravity.START
+//                }
             }
 
         binding.homeImageView.isVisible =
@@ -231,13 +232,13 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             binding.drawerTabsList.isVisible = false
         }
 
-        bookmarksAdapter = BookmarkRecyclerViewAdapter(
-            onClick = presenter::onBookmarkClick,
-            onLongClick = presenter::onBookmarkLongClick,
-            imageLoader = imageLoader
-        )
-        binding.bookmarkListView.adapter = bookmarksAdapter
-        binding.bookmarkListView.layoutManager = LinearLayoutManager(this)
+ //       bookmarksAdapter = BookmarkRecyclerViewAdapter(
+ //           onClick = presenter::onBookmarkClick,
+ //           onLongClick = presenter::onBookmarkLongClick,
+ //           imageLoader = imageLoader
+ //       )
+ //       binding.bookmarkListView.adapter = bookmarksAdapter
+ //       binding.bookmarkListView.layoutManager = LinearLayoutManager(this)
 
         presenter.onViewAttached(BrowserStateAdapter(this))
 
@@ -284,10 +285,10 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             true
         }
         binding.searchRefresh.setOnClickListener { presenter.onRefreshOrStopClick() }
-        binding.actionAddBookmark.setOnClickListener { presenter.onStarClick() }
+//        binding.actionAddBookmark.setOnClickListener { presenter.onStarClick() }
         binding.actionPageTools.setOnClickListener { presenter.onToolsClick() }
         binding.tabHeaderButton.setOnClickListener { presenter.onTabMenuClick() }
-        binding.bookmarkBackButton.setOnClickListener { presenter.onBookmarkMenuClick() }
+//        binding.bookmarkBackButton.setOnClickListener { presenter.onBookmarkMenuClick() }
         binding.searchSslStatus.setOnClickListener { presenter.onSslIconClick() }
 
         tabPager.longPressListener = presenter::onPageLongPress
@@ -318,7 +319,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
         menuItemShare = menu.findItem(R.id.action_share)
         menuItemCopyLink = menu.findItem(R.id.action_copy)
         menuItemAddToHome = menu.findItem(R.id.action_add_to_homescreen)
-        menuItemAddBookmark = menu.findItem(R.id.action_add_bookmark)
+//        menuItemAddBookmark = menu.findItem(R.id.action_add_bookmark)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -347,7 +348,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             menuItemShare?.isVisible = it
             menuItemCopyLink?.isVisible = it
             menuItemAddToHome?.isVisible = it
-            menuItemAddBookmark?.isVisible = it
+//            menuItemAddBookmark?.isVisible = it
         }
         viewState.themeColor?.value()?.let(::animateColorChange)
         viewState.progress?.let { binding.progressView.progress = it }
@@ -360,9 +361,9 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
                 }
             )
         }
-        viewState.bookmarks?.let(bookmarksAdapter::submitList)
-        viewState.isBookmarked?.let { binding.actionAddBookmark.isSelected = it }
-        viewState.isBookmarkEnabled?.let { binding.actionAddBookmark.isEnabled = it }
+//        viewState.bookmarks?.let(bookmarksAdapter::submitList)
+//        viewState.isBookmarked?.let { binding.actionAddBookmark.isSelected = it }
+//        viewState.isBookmarkEnabled?.let { binding.actionAddBookmark.isEnabled = it }
         viewState.isRootFolder?.let {
 /**            binding.bookmarkBackButton.startAnimation(
                 AnimationUtils.createRotationTransitionAnimation(
@@ -396,6 +397,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
     /**
      * @see BrowserContract.View.showAddBookmarkDialog
      */
+/**
     fun showAddBookmarkDialog(title: String, url: String, folders: List<String>) {
         lightningDialogBuilder.showAddBookmarkDialog(
             activity = this,
@@ -405,10 +407,12 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             onSave = presenter::onBookmarkConfirmed
         )
     }
+*/
 
     /**
      * @see BrowserContract.View.showBookmarkOptionsDialog
      */
+/**
     fun showBookmarkOptionsDialog(bookmark: Bookmark.Entry) {
         lightningDialogBuilder.showLongPressedDialogForBookmarkUrl(
             activity = this,
@@ -417,10 +421,12 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             }
         )
     }
+*/
 
     /**
      * @see BrowserContract.View.showEditBookmarkDialog
      */
+/**
     fun showEditBookmarkDialog(title: String, url: String, folder: String, folders: List<String>) {
         lightningDialogBuilder.showEditBookmarkDialog(
             activity = this,
@@ -431,10 +437,11 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             onSave = presenter::onBookmarkEditConfirmed
         )
     }
-
+*/
     /**
      * @see BrowserContract.View.showFolderOptionsDialog
      */
+/**
     fun showFolderOptionsDialog(folder: Bookmark.Folder) {
         lightningDialogBuilder.showBookmarkFolderLongPressedDialog(
             activity = this,
@@ -443,10 +450,11 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             }
         )
     }
-
+*/
     /**
      * @see BrowserContract.View.showEditFolderDialog
      */
+/**
     fun showEditFolderDialog(oldTitle: String) {
         lightningDialogBuilder.showRenameFolderDialog(
             activity = this,
@@ -454,6 +462,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
             onSave = presenter::onBookmarkFolderRenameConfirmed
         )
     }
+*/
 
     /**
      * @see BrowserContract.View.showDownloadOptionsDialog
@@ -596,23 +605,25 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
     /**
      * @see BrowserContract.View.openBookmarkDrawer
      */
+/**
     fun openBookmarkDrawer() {
         binding.drawerLayout.closeDrawer(binding.tabDrawer)
         binding.drawerLayout.openDrawer(binding.bookmarkDrawer)
     }
-
+*/
     /**
      * @see BrowserContract.View.closeBookmarkDrawer
      */
+/**     
     fun closeBookmarkDrawer() {
         binding.drawerLayout.closeDrawer(binding.bookmarkDrawer)
     }
-
+*/
     /**
      * @see BrowserContract.View.openTabDrawer
      */
     fun openTabDrawer() {
-        binding.drawerLayout.closeDrawer(binding.bookmarkDrawer)
+//        binding.drawerLayout.closeDrawer(binding.bookmarkDrawer)
         binding.drawerLayout.openDrawer(binding.tabDrawer)
     }
 
