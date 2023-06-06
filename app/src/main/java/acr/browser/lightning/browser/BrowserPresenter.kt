@@ -103,7 +103,7 @@ class BrowserPresenter @Inject constructor(
 //        bookmarks = emptyList(),
 //        isBookmarked = false,
 //        isBookmarkEnabled = true,
-        isRootFolder = true,
+//        isRootFolder = true,
         findInPage = ""
     )
     private var tabListState: List<TabViewState> = emptyList()
