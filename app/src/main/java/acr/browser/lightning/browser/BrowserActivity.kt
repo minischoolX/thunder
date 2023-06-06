@@ -364,8 +364,8 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
 //        viewState.bookmarks?.let(bookmarksAdapter::submitList)
 //        viewState.isBookmarked?.let { binding.actionAddBookmark.isSelected = it }
 //        viewState.isBookmarkEnabled?.let { binding.actionAddBookmark.isEnabled = it }
-        viewState.isRootFolder?.let {
-/**            binding.bookmarkBackButton.startAnimation(
+/**        viewState.isRootFolder?.let {
+            binding.bookmarkBackButton.startAnimation(
                 AnimationUtils.createRotationTransitionAnimation(
                     binding.bookmarkBackButton,
                     if (it) {
@@ -663,7 +663,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
                 colorTint = color(R.color.error_red).takeIf { areAdsAllowed },
                 title = whitelistString,
                 isConditionMet = shouldShowAdBlockOption,
-                onClick = presenter::onToggleAdBlocking
+//                onClick = presenter::onToggleAdBlocking
             )
         )
     }
