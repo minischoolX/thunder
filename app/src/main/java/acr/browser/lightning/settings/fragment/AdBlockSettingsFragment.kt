@@ -49,7 +49,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
-        injector.inject(this)
+//        injector.inject(this)
 
         togglePreference(
             preference = "cb_block_ads",
