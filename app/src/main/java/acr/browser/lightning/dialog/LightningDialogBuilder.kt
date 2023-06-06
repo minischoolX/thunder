@@ -3,7 +3,7 @@ package acr.browser.lightning.dialog
 import acr.browser.lightning.R
 import acr.browser.lightning.browser.BrowserContract
 import acr.browser.lightning.DefaultBrowserActivity
-import acr.browser.lightning.databinding.DialogEditBookmarkBinding
+//import acr.browser.lightning.databinding.DialogEditBookmarkBinding
 import acr.browser.lightning.extensions.resizeAndShow
 import android.app.Activity
 import android.view.View
@@ -24,7 +24,7 @@ class LightningDialogBuilder @Inject constructor() {
      *
      * @param activity used to show the dialog
      */
-    fun showLongPressedDialogForBookmarkUrl(
+/**    fun showLongPressedDialogForBookmarkUrl(
         activity: Activity,
         onClick: (BrowserContract.BookmarkOptionEvent) -> Unit
     ) = BrowserDialog.show(activity, R.string.action_bookmarks,
@@ -52,7 +52,7 @@ class LightningDialogBuilder @Inject constructor() {
         DialogItem(title = R.string.dialog_edit_bookmark) {
             onClick(BrowserContract.BookmarkOptionEvent.EDIT)
         })
-
+*/
     /**
      * Show the appropriated dialog for the long pressed link.
      *
@@ -74,7 +74,7 @@ class LightningDialogBuilder @Inject constructor() {
     /**
      * Show the add bookmark dialog. Shows a dialog with the title and URL pre-populated.
      */
-    fun showAddBookmarkDialog(
+/**    fun showAddBookmarkDialog(
         activity: Activity,
         currentTitle: String,
         currentUrl: String,
@@ -105,8 +105,8 @@ class LightningDialogBuilder @Inject constructor() {
         editBookmarkDialog.setNegativeButton(R.string.action_cancel) { _, _ -> }
         editBookmarkDialog.resizeAndShow()
     }
-
-    fun showEditBookmarkDialog(
+*/
+/**    fun showEditBookmarkDialog(
         activity: Activity,
         currentTitle: String,
         currentUrl: String,
@@ -137,8 +137,8 @@ class LightningDialogBuilder @Inject constructor() {
         }
         editBookmarkDialog.resizeAndShow()
     }
-
-    fun showBookmarkFolderLongPressedDialog(
+*/
+/**    fun showBookmarkFolderLongPressedDialog(
         activity: Activity,
         onClick: (BrowserContract.FolderOptionEvent) -> Unit
     ) = BrowserDialog.show(activity, R.string.action_folder,
@@ -148,8 +148,8 @@ class LightningDialogBuilder @Inject constructor() {
         DialogItem(title = R.string.dialog_remove_folder) {
             onClick(BrowserContract.FolderOptionEvent.REMOVE)
         })
-
-    fun showRenameFolderDialog(
+*/
+/**    fun showRenameFolderDialog(
         activity: Activity,
         oldTitle: String,
         onSave: (oldTitle: String, newTitle: String) -> Unit
@@ -164,7 +164,7 @@ class LightningDialogBuilder @Inject constructor() {
             onSave(oldTitle, text)
         }
     }
-
+*/
     fun showLongPressedHistoryLinkDialog(
         activity: Activity,
         onClick: (BrowserContract.HistoryOptionEvent) -> Unit
