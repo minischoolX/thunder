@@ -18,7 +18,7 @@
 package acr.browser.lightning.utils
 
 import acr.browser.lightning.constant.FILE
-import acr.browser.lightning.html.bookmark.BookmarkPageFactory
+//import acr.browser.lightning.html.bookmark.BookmarkPageFactory
 import acr.browser.lightning.html.download.DownloadPageFactory
 import acr.browser.lightning.html.history.HistoryPageFactory
 import acr.browser.lightning.html.homepage.HomePageFactory
@@ -78,7 +78,7 @@ fun String?.isFileUrl(): Boolean = this != null && this.startsWith(FILE)
 fun String?.isSpecialUrl(): Boolean =
     this != null
         && this.startsWith(FILE)
-        && (this.endsWith(BookmarkPageFactory.FILENAME)
+//        && (this.endsWith(BookmarkPageFactory.FILENAME)
         || this.endsWith(DownloadPageFactory.FILENAME)
         || this.endsWith(HistoryPageFactory.FILENAME)
         || this.endsWith(HomePageFactory.FILENAME))
@@ -88,8 +88,8 @@ fun String?.isSpecialUrl(): Boolean =
  *
  * @return true if the url is a bookmark url, false otherwise.
  */
-fun String?.isBookmarkUrl(): Boolean =
-    this != null && this.startsWith(FILE) && this.endsWith(BookmarkPageFactory.FILENAME)
+//fun String?.isBookmarkUrl(): Boolean =
+//    this != null && this.startsWith(FILE) && this.endsWith(BookmarkPageFactory.FILENAME)
 
 /**
  * Determines if the url is a url for the bookmark page.
