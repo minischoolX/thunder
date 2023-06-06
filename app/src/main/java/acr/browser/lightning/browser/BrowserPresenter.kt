@@ -24,22 +24,22 @@ import acr.browser.lightning.browser.tab.UrlInitializer
 import acr.browser.lightning.browser.ui.TabConfiguration
 import acr.browser.lightning.browser.ui.UiConfiguration
 import acr.browser.lightning.browser.view.targetUrl.LongPress
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.database.HistoryEntry
 import acr.browser.lightning.database.SearchSuggestion
 import acr.browser.lightning.database.WebPage
 import acr.browser.lightning.database.asFolder
-import acr.browser.lightning.database.bookmark.BookmarkRepository
+//import acr.browser.lightning.database.bookmark.BookmarkRepository
 import acr.browser.lightning.database.downloads.DownloadEntry
 import acr.browser.lightning.database.downloads.DownloadsRepository
 import acr.browser.lightning.database.history.HistoryRepository
-import acr.browser.lightning.html.bookmark.BookmarkPageFactory
+//import acr.browser.lightning.html.bookmark.BookmarkPageFactory
 import acr.browser.lightning.html.history.HistoryPageFactory
 import acr.browser.lightning.search.SearchEngineProvider
 import acr.browser.lightning.ssl.SslState
 import acr.browser.lightning.utils.Option
 import acr.browser.lightning.utils.QUERY_PLACE_HOLDER
-import acr.browser.lightning.utils.isBookmarkUrl
+//import acr.browser.lightning.utils.isBookmarkUrl
 import acr.browser.lightning.utils.isDownloadsUrl
 import acr.browser.lightning.utils.isHistoryUrl
 import acr.browser.lightning.utils.isSpecialUrl
@@ -69,14 +69,14 @@ import kotlin.system.exitProcess
 class BrowserPresenter @Inject constructor(
     private val model: BrowserContract.Model,
     private val navigator: BrowserContract.Navigator,
-    private val bookmarkRepository: BookmarkRepository,
+//    private val bookmarkRepository: BookmarkRepository,
     private val downloadsRepository: DownloadsRepository,
     private val historyRepository: HistoryRepository,
     @DiskScheduler private val diskScheduler: Scheduler,
     @MainScheduler private val mainScheduler: Scheduler,
     @DatabaseScheduler private val databaseScheduler: Scheduler,
     private val historyRecord: HistoryRecord,
-    private val bookmarkPageFactory: BookmarkPageFactory,
+//    private val bookmarkPageFactory: BookmarkPageFactory,
     private val homePageInitializer: HomePageInitializer,
     private val historyPageInitializer: HistoryPageInitializer,
     private val downloadPageInitializer: DownloadPageInitializer,
@@ -100,17 +100,17 @@ class BrowserPresenter @Inject constructor(
         themeColor = Option.None,
         isForwardEnabled = false,
         isBackEnabled = false,
-        bookmarks = emptyList(),
-        isBookmarked = false,
-        isBookmarkEnabled = true,
+//        bookmarks = emptyList(),
+//        isBookmarked = false,
+//        isBookmarkEnabled = true,
         isRootFolder = true,
         findInPage = ""
     )
     private var tabListState: List<TabViewState> = emptyList()
     private var currentTab: TabModel? = null
-    private var currentFolder: Bookmark.Folder = Bookmark.Folder.Root
+//    private var currentFolder: Bookmark.Folder = Bookmark.Folder.Root
     private var isTabDrawerOpen = false
-    private var isBookmarkDrawerOpen = false
+//    private var isBookmarkDrawerOpen = false
     private var isSearchViewFocused = false
     private var tabIdOpenedFromAction = -1
     private var pendingAction: BrowserContract.Action.LoadUrl? = null
@@ -129,13 +129,13 @@ class BrowserPresenter @Inject constructor(
 
         cookieAdministrator.adjustCookieSettings()
 
-        currentFolder = Bookmark.Folder.Root
-        compositeDisposable += bookmarkRepository.bookmarksAndFolders(folder = Bookmark.Folder.Root)
-            .subscribeOn(databaseScheduler)
-            .observeOn(mainScheduler)
-            .subscribe { list ->
-                this.view?.updateState(viewState.copy(bookmarks = list, isRootFolder = true))
-            }
+//        currentFolder = Bookmark.Folder.Root
+//        compositeDisposable += bookmarkRepository.bookmarksAndFolders(folder = Bookmark.Folder.Root)
+//            .subscribeOn(databaseScheduler)
+//            .observeOn(mainScheduler)
+//            .subscribe { list ->
+//                this.view?.updateState(viewState.copy(bookmarks = list, isRootFolder = true))
+//            }
 
         compositeDisposable += model.tabsListChanges()
             .observeOn(mainScheduler)
@@ -235,11 +235,11 @@ class BrowserPresenter @Inject constructor(
             tab.loadingProgress().startWithItem(tab.loadingProgress),
             tab.canGoBackChanges().startWithItem(tab.canGoBack()),
             tab.canGoForwardChanges().startWithItem(tab.canGoForward()),
-            tab.urlChanges().startWithItem(tab.url).observeOn(diskScheduler)
-                .flatMapSingle(bookmarkRepository::isBookmark).observeOn(mainScheduler),
+//            tab.urlChanges().startWithItem(tab.url).observeOn(diskScheduler)
+//                .flatMapSingle(bookmarkRepository::isBookmark).observeOn(mainScheduler),
             tab.urlChanges().startWithItem(tab.url).map(String::isSpecialUrl),
             tab.themeColorChanges().startWithItem(tab.themeColor)
-        ) { sslState, title, url, progress, canGoBack, canGoForward, isBookmark, isSpecialUrl, themeColor ->
+        ) { sslState, title, url, progress, canGoBack, canGoForward, /**isBookmark,*/ isSpecialUrl, themeColor ->
             viewState.copy(
                 displayUrl = searchBoxModel.getDisplayContent(
                     url = url,
@@ -254,8 +254,8 @@ class BrowserPresenter @Inject constructor(
                 isBackEnabled = canGoBack,
                 sslState = sslState.takeIf { !isSearchViewFocused } ?: viewState.sslState,
                 progress = progress,
-                isBookmarked = isBookmark,
-                isBookmarkEnabled = !isSpecialUrl,
+//                isBookmarked = isBookmark,
+//                isBookmarkEnabled = !isSpecialUrl,
                 findInPage = tab.findQuery.orEmpty()
             )
         }.observeOn(mainScheduler)
@@ -391,9 +391,9 @@ class BrowserPresenter @Inject constructor(
                 ?.let(navigator::copyPageLink)
             MenuSelection.ADD_TO_HOME -> currentTab?.url?.takeIf { !it.isSpecialUrl() }
                 ?.let { addToHomeScreen() }
-            MenuSelection.BOOKMARKS -> view?.openBookmarkDrawer()
-            MenuSelection.ADD_BOOKMARK -> currentTab?.url?.takeIf { !it.isSpecialUrl() }
-                ?.let { showAddBookmarkDialog() }
+//            MenuSelection.BOOKMARKS -> view?.openBookmarkDrawer()
+//            MenuSelection.ADD_BOOKMARK -> currentTab?.url?.takeIf { !it.isSpecialUrl() }
+//                ?.let { showAddBookmarkDialog() }
             MenuSelection.SETTINGS -> navigator.openSettings()
             MenuSelection.BACK -> onBackClick()
             MenuSelection.FORWARD -> onForwardClick()
@@ -528,9 +528,9 @@ class BrowserPresenter @Inject constructor(
      *
      * @param isOpen True if the drawer is now open, false if it is now closed.
      */
-    fun onBookmarkDrawerMoved(isOpen: Boolean) {
-        isBookmarkDrawerOpen = isOpen
-    }
+//    fun onBookmarkDrawerMoved(isOpen: Boolean) {
+//        isBookmarkDrawerOpen = isOpen
+//    }
 
     /**
      * Called when the user clicks on the device back button or swipes to go back. Differentiated
@@ -543,11 +543,11 @@ class BrowserPresenter @Inject constructor(
                 currentTab?.hideCustomView()
             }
             isTabDrawerOpen -> view?.closeTabDrawer()
-            isBookmarkDrawerOpen -> if (currentFolder != Bookmark.Folder.Root) {
-                onBookmarkMenuClick()
-            } else {
-                view?.closeBookmarkDrawer()
-            }
+//            isBookmarkDrawerOpen -> if (currentFolder != Bookmark.Folder.Root) {
+//                onBookmarkMenuClick()
+//            } else {
+//                view?.closeBookmarkDrawer()
+//            }
             currentTab?.canGoBack() == true -> currentTab?.goBack()
             currentTab?.canGoBack() == false -> if (incognitoMode) {
                 currentTab?.id?.let {
@@ -625,13 +625,14 @@ class BrowserPresenter @Inject constructor(
         val currentUrl = currentTab?.url
         if (currentUrl?.isSpecialUrl() == true) {
             when {
-                currentUrl.isBookmarkUrl() ->
+/**                currentUrl.isBookmarkUrl() ->
                     compositeDisposable += bookmarkPageFactory.buildPage()
                         .subscribeOn(diskScheduler)
                         .observeOn(mainScheduler)
                         .subscribeBy {
                             currentTab?.reload()
                         }
+*/                        
                 currentUrl.isDownloadsUrl() ->
                     currentTab?.loadFromInitializer(downloadPageInitializer)
                 currentUrl.isHistoryUrl() ->
@@ -732,7 +733,7 @@ class BrowserPresenter @Inject constructor(
     fun onSearchSuggestionClicked(webPage: WebPage) {
         val url = when (webPage) {
             is HistoryEntry,
-            is Bookmark.Entry -> webPage.url
+//            is Bookmark.Entry -> webPage.url
             is SearchSuggestion -> webPage.title
             else -> null
         } ?: error("Other types cannot be search suggestions: $webPage")
@@ -752,6 +753,7 @@ class BrowserPresenter @Inject constructor(
     /**
      * Call when the user clicks on a bookmark from the bookmark list at the provided [index].
      */
+/**     
     fun onBookmarkClick(index: Int) {
         when (val bookmark = viewState.bookmarks[index]) {
             is Bookmark.Entry -> {
@@ -771,7 +773,8 @@ class BrowserPresenter @Inject constructor(
             }
         }
     }
-
+*/
+/**
     private fun BookmarkRepository.bookmarksAndFolders(folder: Bookmark.Folder): Single<List<Bookmark>> =
         getBookmarksFromFolderSorted(folder = folder.title)
             .concatWith(Single.defer {
@@ -783,10 +786,11 @@ class BrowserPresenter @Inject constructor(
             })
             .toList()
             .map(MutableList<List<Bookmark>>::flatten)
-
+*/
     /**
      * Call when the user long presses on a bookmark in the bookmark list at the provided [index].
      */
+/**     
     fun onBookmarkLongClick(index: Int) {
         when (val item = viewState.bookmarks[index]) {
             is Bookmark.Entry -> view?.showBookmarkOptionsDialog(item)
@@ -794,7 +798,7 @@ class BrowserPresenter @Inject constructor(
             Bookmark.Folder.Root -> Unit // Root is not clickable
         }
     }
-
+*/
     /**
      * Call when the user clicks on the page tools button.
      */
@@ -817,7 +821,7 @@ class BrowserPresenter @Inject constructor(
     /**
      * Call when the user chooses to toggle ad blocking on/off for the current web page.
      */
-    fun onToggleAdBlocking() {
+//    fun onToggleAdBlocking() {
 //        val currentUrl = currentTab?.url ?: return
 //        if (allowListModel.isUrlAllowedAds(currentUrl)) {
 //            allowListModel.removeUrlFromAllowList(currentUrl)
@@ -825,12 +829,13 @@ class BrowserPresenter @Inject constructor(
 //            allowListModel.addUrlToAllowList(currentUrl)
 //        }
 //        currentTab?.reload()
-    }
+//    }
 
     /**
      * Call when the user clicks on the star icon to add a bookmark for the current page or remove
      * the existing one.
      */
+/**     
     fun onStarClick() {
         val url = currentTab?.url ?: return
         val title = currentTab?.title.orEmpty()
@@ -860,7 +865,8 @@ class BrowserPresenter @Inject constructor(
                 this.view?.updateState(viewState.copy(bookmarks = list))
             }
     }
-
+*/
+/**
     private fun showAddBookmarkDialog() {
         compositeDisposable += bookmarkRepository.getFolderNames()
             .subscribeOn(databaseScheduler)
@@ -873,6 +879,7 @@ class BrowserPresenter @Inject constructor(
                 )
             }
     }
+*/
 
     /**
      * Call when the user confirms the details for adding a bookmark.
@@ -881,6 +888,7 @@ class BrowserPresenter @Inject constructor(
      * @param url The URL of the bookmark.
      * @param folder The name of the folder the bookmark is in.
      */
+/**
     fun onBookmarkConfirmed(title: String, url: String, folder: String) {
         compositeDisposable += bookmarkRepository.addBookmarkIfNotExists(
             Bookmark.Entry(
@@ -896,7 +904,7 @@ class BrowserPresenter @Inject constructor(
                 this.view?.updateState(viewState.copy(bookmarks = list))
             }
     }
-
+*/
     /**
      * Call when the user confirms the details when editing a bookmark.
      *
@@ -904,6 +912,7 @@ class BrowserPresenter @Inject constructor(
      * @param url The URL of the bookmark.
      * @param folder The name of the folder the bookmark is in.
      */
+/**     
     fun onBookmarkEditConfirmed(title: String, url: String, folder: String) {
         compositeDisposable += bookmarkRepository.editBookmark(
             oldBookmark = Bookmark.Entry(
@@ -928,13 +937,14 @@ class BrowserPresenter @Inject constructor(
                 }
             }
     }
-
+*/
     /**
      * Call when the user confirms a name change to an existing folder.
      *
      * @param oldTitle The previous title of the folder.
      * @param newTitle The new title of the folder.
      */
+/**     
     fun onBookmarkFolderRenameConfirmed(oldTitle: String, newTitle: String) {
         compositeDisposable += bookmarkRepository.renameFolder(oldTitle, newTitle)
             .andThen(bookmarkRepository.bookmarksAndFolders(folder = currentFolder))
@@ -947,10 +957,11 @@ class BrowserPresenter @Inject constructor(
                 }
             }
     }
-
+*/
     /**
      * Call when the user clicks on a menu [option] for the provided [bookmark].
      */
+/**     
     fun onBookmarkOptionClick(
         bookmark: Bookmark.Entry,
         option: BrowserContract.BookmarkOptionEvent
@@ -990,10 +1001,11 @@ class BrowserPresenter @Inject constructor(
                     }
         }
     }
-
+*/
     /**
      * Call when the user clicks on a menu [option] for the provided [folder].
      */
+/**     
     fun onFolderOptionClick(folder: Bookmark.Folder, option: BrowserContract.FolderOptionEvent) {
         when (option) {
             BrowserContract.FolderOptionEvent.RENAME -> view?.showEditFolderDialog(folder.title)
@@ -1011,7 +1023,7 @@ class BrowserPresenter @Inject constructor(
                     }
         }
     }
-
+*/
     /**
      * Call when the user clicks on a menu [option] for the provided [download] entry.
      */
@@ -1095,6 +1107,7 @@ class BrowserPresenter @Inject constructor(
      * Call when the user clicks on the bookmark menu (star or back arrow) located in the bookmark
      * drawer.
      */
+/**     
     fun onBookmarkMenuClick() {
         if (currentFolder != Bookmark.Folder.Root) {
             currentFolder = Bookmark.Folder.Root
@@ -1107,7 +1120,7 @@ class BrowserPresenter @Inject constructor(
                 }
         }
     }
-
+*/
     /**
      * Call when the user long presses anywhere on the web page with the provided tab [id].
      */
@@ -1115,7 +1128,7 @@ class BrowserPresenter @Inject constructor(
         val pageUrl = model.tabsList.find { it.id == id }?.url
         if (pageUrl?.isSpecialUrl() == true) {
             val url = longPress.targetUrl ?: return
-            if (pageUrl.isBookmarkUrl()) {
+/**            if (pageUrl.isBookmarkUrl()) {
                 if (url.isBookmarkUrl()) {
                     val filename = requireNotNull(longPress.targetUrl.toUri().lastPathSegment) {
                         "Last segment should always exist for bookmark file"
@@ -1133,7 +1146,8 @@ class BrowserPresenter @Inject constructor(
                             view?.showBookmarkOptionsDialog(it)
                         }
                 }
-            } else if (pageUrl.isDownloadsUrl()) {
+            } else */
+            if (pageUrl.isDownloadsUrl()) {
                 compositeDisposable += downloadsRepository.findDownloadForUrl(url)
                     .subscribeOn(databaseScheduler)
                     .observeOn(mainScheduler)
