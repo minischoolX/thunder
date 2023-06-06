@@ -1,8 +1,8 @@
 package acr.browser.lightning.browser.tab
 
 import acr.browser.lightning.R
-import acr.browser.lightning.adblock.AdBlocker
-import acr.browser.lightning.adblock.allowlist.AllowListModel
+//import acr.browser.lightning.adblock.AdBlocker
+//import acr.browser.lightning.adblock.allowlist.AllowListModel
 import acr.browser.lightning.databinding.DialogAuthRequestBinding
 import acr.browser.lightning.databinding.DialogSslWarningBinding
 import acr.browser.lightning.extensions.resizeAndShow
@@ -37,8 +37,8 @@ import kotlin.math.abs
  * A [WebViewClient] that supports the tab adaptation.
  */
 class TabWebViewClient @AssistedInject constructor(
-    private val adBlocker: AdBlocker,
-    private val allowListModel: AllowListModel,
+//    private val adBlocker: AdBlocker,
+//    private val allowListModel: AllowListModel,
     private val urlHandler: UrlHandler,
     @Assisted private val headers: Map<String, String>,
     private val userPreferences: UserPreferences,
@@ -78,9 +78,9 @@ class TabWebViewClient @AssistedInject constructor(
     private var zoomScale: Float = 0.0F
     private var urlWithSslError: String? = null
 
-    private fun shouldBlockRequest(pageUrl: String, requestUrl: String) =
-        !allowListModel.isUrlAllowedAds(pageUrl) &&
-            adBlocker.isAd(requestUrl)
+//    private fun shouldBlockRequest(pageUrl: String, requestUrl: String) =
+//        !allowListModel.isUrlAllowedAds(pageUrl) &&
+//            adBlocker.isAd(requestUrl)
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
@@ -235,10 +235,10 @@ class TabWebViewClient @AssistedInject constructor(
         view: WebView,
         request: WebResourceRequest
     ): WebResourceResponse? {
-        if (shouldBlockRequest(currentUrl, request.url.toString())) {
-            val empty = ByteArrayInputStream(emptyResponseByteArray)
-            return WebResourceResponse(BLOCKED_RESPONSE_MIME_TYPE, BLOCKED_RESPONSE_ENCODING, empty)
-        }
+//        if (shouldBlockRequest(currentUrl, request.url.toString())) {
+//            val empty = ByteArrayInputStream(emptyResponseByteArray)
+//            return WebResourceResponse(BLOCKED_RESPONSE_MIME_TYPE, BLOCKED_RESPONSE_ENCODING, empty)
+//        }
         return null
     }
 
@@ -282,9 +282,9 @@ class TabWebViewClient @AssistedInject constructor(
     companion object {
         private const val TAG = "TabWebViewClient"
 
-        private val emptyResponseByteArray: ByteArray = byteArrayOf()
+//        private val emptyResponseByteArray: ByteArray = byteArrayOf()
 
-        private const val BLOCKED_RESPONSE_MIME_TYPE = "text/plain"
-        private const val BLOCKED_RESPONSE_ENCODING = "utf-8"
+//        private const val BLOCKED_RESPONSE_MIME_TYPE = "text/plain"
+//        private const val BLOCKED_RESPONSE_ENCODING = "utf-8"
     }
 }

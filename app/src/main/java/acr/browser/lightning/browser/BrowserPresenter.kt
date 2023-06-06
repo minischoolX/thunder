@@ -1,6 +1,6 @@
 package acr.browser.lightning.browser
 
-import acr.browser.lightning.adblock.allowlist.AllowListModel
+//import acr.browser.lightning.adblock.allowlist.AllowListModel
 import acr.browser.lightning.browser.data.CookieAdministrator
 import acr.browser.lightning.browser.di.Browser2Scope
 import acr.browser.lightning.browser.di.DatabaseScheduler
@@ -84,7 +84,7 @@ class BrowserPresenter @Inject constructor(
     private val searchEngineProvider: SearchEngineProvider,
     private val uiConfiguration: UiConfiguration,
     private val historyPageFactory: HistoryPageFactory,
-    private val allowListModel: AllowListModel,
+//    private val allowListModel: AllowListModel,
     private val cookieAdministrator: CookieAdministrator,
     private val tabCountNotifier: TabCountNotifier,
     @IncognitoMode private val incognitoMode: Boolean
@@ -801,8 +801,8 @@ class BrowserPresenter @Inject constructor(
     fun onToolsClick() {
         val currentUrl = currentTab?.url ?: return
         view?.showToolsDialog(
-            areAdsAllowed = allowListModel.isUrlAllowedAds(currentUrl),
-            shouldShowAdBlockOption = !currentUrl.isSpecialUrl()
+            areAdsAllowed = false, //allowListModel.isUrlAllowedAds(currentUrl),
+            shouldShowAdBlockOption = false, //!currentUrl.isSpecialUrl()
         )
     }
 
@@ -818,13 +818,13 @@ class BrowserPresenter @Inject constructor(
      * Call when the user chooses to toggle ad blocking on/off for the current web page.
      */
     fun onToggleAdBlocking() {
-        val currentUrl = currentTab?.url ?: return
-        if (allowListModel.isUrlAllowedAds(currentUrl)) {
-            allowListModel.removeUrlFromAllowList(currentUrl)
-        } else {
-            allowListModel.addUrlToAllowList(currentUrl)
-        }
-        currentTab?.reload()
+//        val currentUrl = currentTab?.url ?: return
+//        if (allowListModel.isUrlAllowedAds(currentUrl)) {
+//            allowListModel.removeUrlFromAllowList(currentUrl)
+//        } else {
+//            allowListModel.addUrlToAllowList(currentUrl)
+//        }
+//        currentTab?.reload()
     }
 
     /**

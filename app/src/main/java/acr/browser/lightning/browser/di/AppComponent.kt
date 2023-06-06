@@ -2,14 +2,14 @@ package acr.browser.lightning.browser.di
 
 import acr.browser.lightning.BrowserApp
 import acr.browser.lightning.ThemableBrowserActivity
-import acr.browser.lightning.adblock.BloomFilterAdBlocker
-import acr.browser.lightning.adblock.NoOpAdBlocker
+//import acr.browser.lightning.adblock.BloomFilterAdBlocker
+//import acr.browser.lightning.adblock.NoOpAdBlocker
 import acr.browser.lightning.browser.search.SearchBoxModel
 import acr.browser.lightning.device.BuildInfo
 import acr.browser.lightning.dialog.LightningDialogBuilder
 import acr.browser.lightning.search.SuggestionsAdapter
 import acr.browser.lightning.settings.activity.ThemableSettingsActivity
-import acr.browser.lightning.settings.fragment.AdBlockSettingsFragment
+//import acr.browser.lightning.settings.fragment.AdBlockSettingsFragment
 import acr.browser.lightning.settings.fragment.AdvancedSettingsFragment
 import acr.browser.lightning.settings.fragment.BookmarkSettingsFragment
 import acr.browser.lightning.settings.fragment.DebugSettingsFragment
@@ -65,11 +65,11 @@ interface AppComponent {
 
     fun inject(displaySettingsFragment: DisplaySettingsFragment)
 
-    fun inject(adBlockSettingsFragment: AdBlockSettingsFragment)
+//    fun inject(adBlockSettingsFragment: AdBlockSettingsFragment)
 
-    fun provideBloomFilterAdBlocker(): BloomFilterAdBlocker
+//    fun provideBloomFilterAdBlocker(): BloomFilterAdBlocker
 
-    fun provideNoOpAdBlocker(): NoOpAdBlocker
+//    fun provideNoOpAdBlocker(): NoOpAdBlocker
 
     fun browser2ComponentBuilder(): Browser2Component.Builder
 
