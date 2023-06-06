@@ -2,7 +2,7 @@ package acr.browser.lightning.browser.tab.bundle
 
 import acr.browser.lightning.R
 import acr.browser.lightning.browser.di.DiskScheduler
-import acr.browser.lightning.browser.tab.BookmarkPageInitializer
+//import acr.browser.lightning.browser.tab.BookmarkPageInitializer
 import acr.browser.lightning.browser.tab.DownloadPageInitializer
 import acr.browser.lightning.browser.tab.FreezableBundleInitializer
 import acr.browser.lightning.browser.tab.HistoryPageInitializer
@@ -25,7 +25,7 @@ import javax.inject.Inject
  */
 class DefaultBundleStore @Inject constructor(
     private val application: Application,
-    private val bookmarkPageInitializer: BookmarkPageInitializer,
+//    private val bookmarkPageInitializer: BookmarkPageInitializer,
     private val homePageInitializer: HomePageInitializer,
     private val downloadPageInitializer: DownloadPageInitializer,
     private val historyPageInitializer: HistoryPageInitializer,
@@ -66,7 +66,7 @@ class DefaultBundleStore @Inject constructor(
         }?.map { (bundle, title) ->
             return@map bundle.getString(URL_KEY)?.let { url ->
                 when {
-                    url.isBookmarkUrl() -> bookmarkPageInitializer
+//                    url.isBookmarkUrl() -> bookmarkPageInitializer
                     url.isDownloadsUrl() -> downloadPageInitializer
                     url.isStartPageUrl() -> homePageInitializer
                     url.isHistoryUrl() -> historyPageInitializer
