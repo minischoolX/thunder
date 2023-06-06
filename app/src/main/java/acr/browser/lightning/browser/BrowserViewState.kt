@@ -1,6 +1,6 @@
 package acr.browser.lightning.browser
 
-import acr.browser.lightning.database.Bookmark
+//import acr.browser.lightning.database.Bookmark
 import acr.browser.lightning.ssl.SslState
 import acr.browser.lightning.utils.Option
 
@@ -38,10 +38,10 @@ data class BrowserViewState(
     val isBackEnabled: Boolean,
 
     // Bookmarks
-    val bookmarks: List<Bookmark>,
-    val isBookmarked: Boolean,
-    val isBookmarkEnabled: Boolean,
-    val isRootFolder: Boolean,
+//    val bookmarks: List<Bookmark>,
+//    val isBookmarked: Boolean,
+//    val isBookmarkEnabled: Boolean,
+//    val isRootFolder: Boolean,
 
     // find
     val findInPage: String
@@ -65,10 +65,10 @@ data class PartialBrowserViewState(
     val isBackEnabled: Boolean?,
 
     // Bookmarks
-    val bookmarks: List<Bookmark>?,
-    val isBookmarked: Boolean?,
-    val isBookmarkEnabled: Boolean?,
-    val isRootFolder: Boolean?,
+//    val bookmarks: List<Bookmark>?,
+//    val isBookmarked: Boolean?,
+//    val isBookmarkEnabled: Boolean?,
+//    val isRootFolder: Boolean?,
 
     // find
     val findInPage: String?
