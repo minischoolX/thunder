@@ -37,7 +37,7 @@ import acr.browser.lightning.extensions.drawable
 import acr.browser.lightning.extensions.resizeAndShow
 import acr.browser.lightning.extensions.takeIfInstance
 import acr.browser.lightning.extensions.tint
-import acr.browser.lightning.search.SuggestionsAdapter
+//import acr.browser.lightning.search.SuggestionsAdapter
 import acr.browser.lightning.ssl.createSslDrawableForState
 import acr.browser.lightning.utils.ProxyUtils
 import acr.browser.lightning.utils.value
@@ -242,7 +242,7 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
 
         presenter.onViewAttached(BrowserStateAdapter(this))
 
-        val suggestionsAdapter = SuggestionsAdapter(this, isIncognito = isIncognito()).apply {
+/**        val suggestionsAdapter = SuggestionsAdapter(this, isIncognito = isIncognito()).apply {
             onSuggestionInsertClick = {
                 if (it is SearchSuggestion) {
                     binding.search.setText(it.title)
@@ -253,12 +253,13 @@ abstract class BrowserActivity : ThemableBrowserActivity() {
                 }
             }
         }
+*/        
         binding.search.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             binding.search.clearFocus()
-            presenter.onSearchSuggestionClicked(suggestionsAdapter.getItem(position) as WebPage)
+//            presenter.onSearchSuggestionClicked(suggestionsAdapter.getItem(position) as WebPage)
             inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
         }
-        binding.search.setAdapter(suggestionsAdapter)
+//        binding.search.setAdapter(suggestionsAdapter)
         val searchListener = SearchListener(
             onConfirm = { presenter.onSearch(binding.search.text.toString()) },
             inputMethodManager = inputMethodManager
