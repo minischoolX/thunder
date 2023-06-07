@@ -176,12 +176,7 @@ class SuggestionsAdapter(
                 .startWithItem(emptyList())
                 .share()
 
-/**            val bookmarksEntries = upstream
-                .flatMapSingle(::getBookmarksForQuery)
-                .subscribeOn(databaseScheduler)
-                .startWithItem(emptyList())
-                .share()
-*/
+
             val historyEntries = upstream
                 .flatMapSingle(historyRepository::findHistoryEntriesContaining)
                 .subscribeOn(databaseScheduler)
@@ -193,27 +188,11 @@ class SuggestionsAdapter(
             // History - 2
             // Search - 1
 
-/**            bookmarksEntries
-                .join(
-                    other = historyEntries,
-                    selectorLeft = { bookmarksEntries },
-                    selectorRight = { historyEntries },
-                    join = ::Pair
-                )
-                .compose { bookmarksAndHistory ->
-                    bookmarksAndHistory.join(
-                        other = searchEntries,
-                        selectorLeft = { bookmarksAndHistory },
-                        selectorRight = { searchEntries }
-                    ) { (bookmarks, history), t2 ->
-                        Triple(bookmarks, history, t2)
-                    }
-                }
- */               
+
         }
-        .map { (/**bookmarks,*/ history, searches) ->
-//            val bookmarkCount =
-//                MAX_SUGGESTIONS - 2.coerceAtMost(history.size) - 1.coerceAtMost(searches.size)
+        .map { (history, searches) ->
+
+
             val historyCount =
                 MAX_SUGGESTIONS /**- bookmarkCount.coerceAtMost(bookmarks.size)*/ - 1.coerceAtMost(
                     searches.size
@@ -223,7 +202,7 @@ class SuggestionsAdapter(
                     history.size
                 )
 
-          /**  bookmarks.take(bookmarkCount) +*/ history.take(historyCount) + searches.take(searchCount)
+          history.take(historyCount) + searches.take(searchCount)
         }
 
     companion object {
