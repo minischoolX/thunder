@@ -142,7 +142,7 @@ class SuggestionsAdapter(
         return finalView
     }
 
-    override fun getFilter(): Filter = searchFilter
+//    override fun getFilter(): Filter = searchFilter
 
 /**    private fun publishResults(list: List<WebPage>?) {
         if (list == null) {
