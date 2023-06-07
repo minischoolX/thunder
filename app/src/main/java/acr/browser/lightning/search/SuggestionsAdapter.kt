@@ -48,7 +48,7 @@ class SuggestionsAdapter(
     @Inject internal lateinit var searchEngineProvider: SearchEngineProvider
 
 //    private var allBookmarks: List<Bookmark.Entry> = emptyList()
-    private val searchFilter = SearchFilter(this)
+//    private val searchFilter = SearchFilter(this)
 
     private val searchIcon = context.drawable(R.drawable.ic_search)
     private val webPageIcon = context.drawable(R.drawable.ic_history)
