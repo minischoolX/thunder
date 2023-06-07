@@ -39,9 +39,3 @@ jobs:
           name: debug
           path: app/build/outputs/apk/lightningPlus/debug
 
-      # Uploads the folder or file in path to GitHub
-      - name: Upload minifiedReport
-        uses: actions/upload-artifact@v2
-        with:
-          name: minifiedResources
-          path: app/build/outputs/mapping/lightningPlus/debug/mapping.txt
