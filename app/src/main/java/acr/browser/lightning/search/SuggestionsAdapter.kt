@@ -22,7 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Filter
-import android.widget.Filterable
+//import android.widget.Filterable
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Observable
@@ -35,7 +35,8 @@ import javax.inject.Inject
 class SuggestionsAdapter(
     context: Context,
     private val isIncognito: Boolean
-) : BaseAdapter(), Filterable {
+) : BaseAdapter() {
+//) : BaseAdapter(), Filterable {
 
     private var filteredList: List<WebPage> = emptyList()
 
