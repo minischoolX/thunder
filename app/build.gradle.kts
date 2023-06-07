@@ -34,8 +34,8 @@ android {
     buildTypes {
         named("debug") {
             multiDexEnabled = true
-            isMinifyEnabled = false
-            isShrinkResources = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             setProguardFiles(listOf("proguard-project.txt"))
             isTestCoverageEnabled = true
         }
