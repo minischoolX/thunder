@@ -13,7 +13,7 @@ import acr.browser.lightning.browser.di.NetworkScheduler
 import acr.browser.lightning.browser.di.injector
 import acr.browser.lightning.extensions.drawable
 import acr.browser.lightning.preference.UserPreferences
-import acr.browser.lightning.rx.join
+//import acr.browser.lightning.rx.join
 import acr.browser.lightning.search.suggestions.NoOpSuggestionsRepository
 import acr.browser.lightning.search.suggestions.SuggestionsRepository
 import android.content.Context
@@ -77,10 +77,10 @@ class SuggestionsAdapter(
 
 //        refreshBookmarks()
 
-        searchFilter.input().results()
-            .subscribeOn(databaseScheduler)
-            .observeOn(mainScheduler)
-            .subscribe(::publishResults)
+//        searchFilter.input().results()
+//            .subscribeOn(databaseScheduler)
+//            .observeOn(mainScheduler)
+//            .subscribe(::publishResults)
     }
 
     fun refreshPreferences() {
@@ -144,7 +144,7 @@ class SuggestionsAdapter(
 
     override fun getFilter(): Filter = searchFilter
 
-    private fun publishResults(list: List<WebPage>?) {
+/**    private fun publishResults(list: List<WebPage>?) {
         if (list == null) {
             notifyDataSetChanged()
             return
@@ -154,7 +154,7 @@ class SuggestionsAdapter(
             notifyDataSetChanged()
         }
     }
-
+*/
 /**    private fun getBookmarksForQuery(query: String): Single<List<Bookmark.Entry>> =
         Single.fromCallable {
             (allBookmarks.filter {
@@ -164,7 +164,7 @@ class SuggestionsAdapter(
             }).distinct().take(MAX_SUGGESTIONS)
         }
 */
-    private fun Observable<CharSequence>.results(): Flowable<List<WebPage>> = this
+/**    private fun Observable<CharSequence>.results(): Flowable<List<WebPage>> = this
         .toFlowable(BackpressureStrategy.LATEST)
         .map { it.toString().lowercase(Locale.getDefault()).trim() }
         .filter(String::isNotEmpty)
@@ -231,5 +231,5 @@ class SuggestionsAdapter(
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) =
             suggestionsAdapter.publishResults(null)
     }
-
+*/
 }
